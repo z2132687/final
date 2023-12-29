@@ -7,7 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD
 import com.example.afinal.R;
+=======
+import com.example.test.R;
+>>>>>>> d739600073978a258cc53382312b2496742ed253
 
 public class Start extends AppCompatActivity {
 
@@ -26,7 +30,11 @@ public class Start extends AppCompatActivity {
     }
 
     private void startGame() {
+<<<<<<< HEAD
         Intent intent = new Intent(this, MainActivity.class);
+=======
+        Intent intent = new Intent(this, Start.class);
+>>>>>>> d739600073978a258cc53382312b2496742ed253
         startActivity(intent);
         finish();
     }
