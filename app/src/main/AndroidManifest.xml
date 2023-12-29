@@ -13,7 +13,6 @@
         android:theme="@style/Theme.Final"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".Score"
             android:exported="false"
             android:screenOrientation="landscape" />
@@ -25,12 +24,9 @@
             android:screenOrientation="landscape"
             android:name=".Start"
             android:exported="true">
-=======
-            android:name="com.example.afinal.Start"
-            android:exported="true" >
->>>>>>> d739600073978a258cc53382312b2496742ed253
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
