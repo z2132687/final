@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         threemouse = (ImageView) findViewById(R.id.imageView2);
         mouse = (ImageView) findViewById(R.id.imageView1);
         info1 = findViewById(R.id.info);
+
 /************获取洞穴位置*****************/
 //通过 logcat 查看 【注】：getRawY()：触摸点距离屏幕上方的长度（此长度包括程序项目名栏的）
         info1.setOnTouchListener(new View.OnTouchListener() {
