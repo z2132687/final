@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.test.R;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -68,9 +70,10 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//设置横屏模式
 /************2.绑定控件*****************/
 
-        threemouse = (ImageView) findViewById(R.id.imageView2);
-        mouse = (ImageView) findViewById(R.id.imageView1);
+        threemouse = (ImageView) findViewById(R.id.threemouse);
+        mouse = (ImageView) findViewById(R.id.mouse);
         info1 = findViewById(R.id.info);
+
 /************获取洞穴位置*****************/
 //通过 logcat 查看 【注】：getRawY()：触摸点距离屏幕上方的长度（此长度包括程序项目名栏的）
         info1.setOnTouchListener(new View.OnTouchListener() {
@@ -185,7 +188,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }}
+    }
+}
 
 
 

@@ -5,13 +5,13 @@
     android:background="@drawable/backgroud">
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/mouse"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:src="@drawable/mouse" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/threemouse"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:src="@drawable/threemouse" />
