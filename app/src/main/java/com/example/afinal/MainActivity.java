@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,6 +24,10 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     /************1.定义变量、对象、洞穴坐标******************/
+    private static final int GAME_DURATION = 30000; // 30 seconds
+    private Runnable timerRunnable;
+    private int score = 0;
+    /***********/
     private int i=0;//记录打到的地鼠个数
     private ImageView mouse;//定义 mouse 对象
 
@@ -39,6 +44,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+/**************************************************/
+        handler = new Handler();
+
+        // Set up timer
+        timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                endGame();
+            }
+        };
+        handler.postDelayed(timerRunnable, GAME_DURATION);
+/**************************************************/
 
             // 其他初始化部分...
 
@@ -57,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 // 遊戲時間結束的處理邏輯
                 timerTextView.setText("剩餘時間：0秒");
-                // 其他結束遊戲的相應處理...
+
+                // 結束遊戲的相應處理
+
             }
         }.start();
 
@@ -66,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置不显示顶部栏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//设置横屏模式
+
 /************2.绑定控件*****************/
 
         threemouse = (ImageView) findViewById(R.id.imageView2);
@@ -166,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 v.setVisibility(View.INVISIBLE);//设置地鼠不显示
                 i++;
+                score = score + 1;
                 Toast.makeText(MainActivity.this , "打到[ " + i + " ]只地鼠！",
                         Toast.LENGTH_SHORT).show(); // 显示消息提示框
                 return false;
@@ -179,13 +201,33 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 v.setVisibility(View.INVISIBLE);//设置地鼠不显示
                 i = i + 3;
+                score = score + 3;
                 Toast.makeText(MainActivity.this , "打到[ " + i + " ]只地鼠！",
                         Toast.LENGTH_SHORT).show(); // 显示消息提示框
                 return false;
             }
         });
 
-    }}
+    }
+    public void increaseScore() {
+        score++;
+        // TODO: Update UI to reflect the current score
+    }
+
+    private void endGame() {
+        Intent intent = new Intent(this, Score.class);
+        intent.putExtra("SCORE", score);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove any callbacks to prevent memory leaks
+        handler.removeCallbacks(timerRunnable);
+    }
+}
 
 
 
