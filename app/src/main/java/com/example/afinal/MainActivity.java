@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -38,6 +39,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+            // 其他初始化部分...
+
+            // 在這裡加入 CountDownTimer
+        TextView timerTextView = findViewById(R.id.timerTextView);
+
+        long GAME_DURATION_MILLIS = 30000; // 30 seconds in milliseconds
+        new CountDownTimer(GAME_DURATION_MILLIS, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int remainingTime = (int) (millisUntilFinished / 1000);
+                timerTextView.setText("剩餘時間：" + remainingTime + "秒");
+            }
+
+            @Override
+            public void onFinish() {
+                // 遊戲時間結束的處理邏輯
+                timerTextView.setText("剩餘時間：0秒");
+                // 其他結束遊戲的相應處理...
+            }
+        }.start();
+
+            // 開啟地鼠產生的線程...
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置不显示顶部栏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//设置横屏模式
