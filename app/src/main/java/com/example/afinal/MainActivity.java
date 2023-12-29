@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.test.R;
+
 
 import java.util.Random;
 
@@ -212,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-<<<<<<< HEAD
     public void increaseScore() {
         score++;
         // TODO: Update UI to reflect the current score
@@ -231,8 +230,7 @@ public class MainActivity extends AppCompatActivity {
         // Remove any callbacks to prevent memory leaks
         handler.removeCallbacks(timerRunnable);
     }
-=======
->>>>>>> d739600073978a258cc53382312b2496742ed253
+
 }
 
 
